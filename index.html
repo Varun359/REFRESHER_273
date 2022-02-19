@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Get A Joke</title>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+    <body>
+        <script crossorigin="anonymous" type="module" src="./index.js"></script>
+        <h1>Get Jokes</h1>
+        <div id="error"></div>
+        <form action="/" id="form" class="submission-form container my-5">
+            <div class="row my-2">
+                <label class="col-6" for="username">Username</label>
+                <input
+                    id="username"
+                    class="username col-6"
+                    type="text"
+                    autofocus
+                    placeholder="Enter your username"
+                    name="username"
+                    required
+                />
+            </div>
+            <div class="row my-2">
+                <label class="col-6" for="email">Email:</label>
+                <input
+                    id="email"
+                    class="email col-6"
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    name="email"
+                    pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
+                />
+            </div>
+            <div class="row my-2">
+                <label class="col-6">Select category/categories</label>
+                <div class="col-6">
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="radio"
+                            class="category-base"
+                            name="category-base"
+                            value="Any"
+                            checked
+                        />
+                        Any
+                    </span>
+                    <span class="d-inline-block mr-2 ml-3">
+                        <input
+                            type="radio"
+                            class="category-base"
+                            name="category-base"
+                            value="Custom"
+                        />
+                        Custom
+                    </span>
+                    <div id="custom-cat" class="hidden mt-2">
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Programming"
+                                value="Programming"
+                            />
+                            <label for="Programming">Programming</label>
+                        </span>
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Misc"
+                                value="Misc"
+                            />
+                            <label for="Misc">Misc</label>
+                        </span>
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Dark"
+                                value="Dark"
+                            />
+                            <label for="Dark">Dark</label>
+                        </span>
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Pun"
+                                value="Pun"
+                            />
+                            <label for="Pun">Pun</label>
+                        </span>
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Spooky"
+                                value="Spooky"
+                            />
+                            <label for="Spooky">Spooky</label>
+                        </span>
+                        <span class="d-inline-block mr-2">
+                            <input
+                                type="checkbox"
+                                class="category"
+                                name="Christmas"
+                                value="Christmas"
+                            />
+                            <label for="Christmas">Christmas</label>'
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2">
+                <label class="col-6" for="language">Select language:</label>
+                <select class="col-6" id="language" name="language">
+                    <option value="Czech">cs - Czech</option>
+                    <option value="German">de - German</option>
+                    <option value="English" selected>en - English</option>
+                    <option value="Spanish">es - Spanish</option>
+                    <option value="French">fr - French</option>
+                    <option value="Potuguese">pt - Potuguese</option>
+                </select>
+            </div>
+
+            <div class="row my-2">
+                <label class="col-6"
+                    >Select flags to blacklist (optional):</label
+                >
+                <div class="col-6">
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="nsfw"
+                            value="nsfw"
+                        />
+                        <label for="nsfw">nsfw</label>
+                    </span>
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="religious"
+                            value="religious"
+                        />
+                        <label for="religious">religious</label>
+                    </span>
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="political"
+                            value="political"
+                        />
+                        <label for="political">political</label>
+                    </span>
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="racist"
+                            value="racist"
+                        />
+                        <label for="racist">racist</label>
+                    </span>
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="sexist"
+                            value="sexist"
+                        />
+                        <label for="sexist">sexist</label>
+                    </span>
+                    <span class="d-inline-block mr-2">
+                        <input
+                            type="checkbox"
+                            class="blacklist"
+                            name="explicit"
+                            value="explicit"
+                        />
+                        <label for="explicit">explicit</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row my-2">
+                <label class="col-6">Search for a joke in this ID range:</label>
+                <div class="col-6">
+                    <div class="row">
+                        <label class="col-4" for="from">From:</label>
+                        <input
+                            type="number"
+                            class="rangeFrom col-8"
+                            min="0"
+                            placeholder="max 318"
+                            name="from"
+                            required
+                        />
+                    </div>
+                    <div class="row mt-2">
+                        <label class="col-4" for="to">To:</label>
+                        <input
+                            type="number"
+                            min="0"
+                            class="rangeTo col-8"
+                            placeholder="max 319"
+                            name="to"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="row my-2">
+                <label class="col-6" for="count">Amount of jokes:</label>
+                <input
+                    class="count col-6"
+                    type="number"
+                    min="1"
+                    placeholder="max 319"
+                    name="count"
+                    required
+                />
+            </div>
+            <div class="row mt-5">
+                <div class="col-4">&nbsp;</div>
+                <button
+                    id="form-submit"
+                    class="btn btn-primary col-4 md-5"
+                    type="submit"
+                    onclick="validateName()"
+                >
+                    Submit
+                </button>
+                <div class="col-4">&nbsp;</div>
+            </div>
+
+        </form>
+
+        <div class="row mt-5">
+            <div class="col-4">&nbsp;</div>
+            <button
+                class="btn btn-secondary col-4 md-5"
+                onclick="getLocation()"
+            >
+                Get Location
+            </button>
+            <div class="col-4">&nbsp;</div>
+        </div>
+
+        <div id="geo" class="mt-4 text-center"> </div>
+          
+        <strong> <div id="place" class="mt-2 text-center "> </div> </strong>
+
+        <div>
+            <h1 id="jokeTitle">&nbsp;</h1>
+            <div id="favorites" class="mb-5"></div>
+            <form id="fav-div" class="grid my-4 hidden">
+                <div class="row mt-5">
+                    <label class="col-6" for="fav-id">Enter Favorite Id:</label>
+                    <input
+                        class="fav-id col-6"
+                        type="text"
+                        min="1"
+                        placeholder="Enter comma seperated ids"
+                        name="fav-id"
+                        id="fav-id"
+                    />
+                </div>
+
+
+
+                <div class="row mt-5">
+                    <div class="col-4">&nbsp;</div>
+                    <button
+                        id="export-submit"
+                        class="btn btn-primary col-4 md-5"
+                        type="button"
+                    >
+                        Submit
+                    </button>
+                    <div class="col-4">&nbsp;</div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+
+            function validateName() {
+                var p = document.getElementById('username').value,
+                    errors = [];
+                if (p.length < 5) {
+                    errors.push("Your user name must be at least 5 characters"); 
+                    console.log("Your user name must be at least 5 characters")
+                }
+                if (p.search(/[a-z]/i) < 0) {
+                    errors.push("Your user name must contain at least one letter.");
+                    console.log("Your user name must contain at least one letter.")
+                }
+                if (p.search(/[0-9]/) < 0) {
+                    errors.push("Your user name must contain at least one digit."); 
+                    console.log("Your user name must contain at least one digit.")
+                }
+                if (errors.length > 0) {
+                    alert(errors.join("\n"));
+                    return false;
+                }
+                return true;
+            }
+
+
+         var geo=document.getElementById('geo')
+         var place=document.getElementById('place')
+         function getLocation()
+         {
+            if(navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+
+            else
+            {
+                geo.innerHTML="Geolocation is not supported by the browser"
+            }
+         }
+
+            function showPosition(position)
+            {
+                var coordinates="Latitude: "+position.coords.latitude+"&amp; Longitude: "+position.coords.longitude
+                console.log(coordinates)
+                geo.innerHTML=coordinates
+                getPlace(position.coords.latitude,position.coords.longitude)
+            }
+
+            const getPlace= (lat,long)=>{
+                var xmlr=new XMLHttpRequest();
+                xmlr.open('GET',"https://us1.locationiq.com/v1/reverse.php?key=pk.d372ac2d2c433f720fa34457ac508170&lat="+ lat +"&lon=" +long +"&format=json", true);
+                xmlr.send();
+                xmlr.onreadystatechange=processRequest;
+                xmlr.addEventListener("readystatechange", processRequest, false);
+  
+            function processRequest(e){
+               if (xmlr.readyState == 4 && xmlr.status == 200) {
+                   var response = JSON.parse(xmlr.responseText);
+                   var loc = response.address.city;
+                   console.log(loc)
+                   place.innerHTML="You are in "+loc
+                   return;
+        }
+    }
+ }
+        </script>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

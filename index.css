@@ -1,0 +1,15 @@
+body {
+    max-width: 700px;
+    width: 90%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+    margin-top: 1em;
+}
+
+.hidden {
+    display: none;
+}

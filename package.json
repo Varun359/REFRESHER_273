@@ -1,0 +1,16 @@
+{
+  "name": "refresher_273",
+  "version": "1.0.0",
+  "description": "This project has been created using **webpack-cli**, you can now run",
+  "main": "index.js",
+  "scripts": {
+    "app" : "http-server ./ -p 8080" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+
+}
